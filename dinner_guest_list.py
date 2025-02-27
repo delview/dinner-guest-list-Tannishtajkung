@@ -22,6 +22,7 @@ def add(): # Function that adds guests to the list
         add_num = add_num + 1
 
     print(f"\nHere's your guest list:")
+    guest_list.sort() # Sorting the list alphabetically
     for guests in guest_list:
         print(guests) # Prints out the guest list
 
@@ -49,6 +50,7 @@ def remove(): # Function that removes guests from the list
         remove_num = remove_num + 1
 
     print(f"\nHere's your guest list:")
+    guest_list.sort() # Sorting the list alphabetically
     for guests in guest_list:
         print(guests) # Prints out the guest list
 
@@ -76,6 +78,7 @@ def replace(): # Function that replaces a guest in the list
         replace_num = replace_num + 1
         
     print(f"\nHere's your guest list:")
+    guest_list.sort() # Sorting the list alphabetically
     for guests in guest_list:
         print(guests) # Prints out the guest list
 
@@ -114,7 +117,7 @@ while True: # Loop if choice_add is yes
 # Ask the user if they want to remove anyone from the list
 while True: # Loop if choice_remove is yes
     while True: # Input problem
-        choice_remove = input("Forgot someone? Do you want to add anyone else in the list? [y/n]:  ").strip().lower()
+        choice_remove = input("Do you want to remove anyone else from the list? [y/n]:  ").strip().lower()
         if choice_remove in ['y', 'n']:
             break
         print(f"Invalid! Enter either [y]es or [n]o.\n")
@@ -140,10 +143,11 @@ while True: # Loop if choice_replace is yes
 
     elif choice_replace == "n": # Final list
         print(f"\nHere's your final guest list:")
+        guest_list.sort() # Sorting the list alphabetically
         for guests in guest_list:
-            print(guests)
+            print(guests) # Prints out the guest list
         print(f"\nThe number of people, you invited-: ")
-        print(len(guest_list))
+        print(len(guest_list)) # Prints out the number of people in the guest list
         print("")
         break
 
@@ -154,4 +158,4 @@ while True: # Loop if choice_replace is yes
 
 
 # Goodbye
-print(f"Thanks for using the program, hope your dinner party goes well!\n")
+print(f"\nThanks for using the program, hope your dinner party goes well!\n")
