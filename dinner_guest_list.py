@@ -34,6 +34,15 @@ def add(): # Function that adds guests to the list
 
 def remove(): # Function that removes guests from the list
     remove_num = 1
+
+    while True:
+        remove_choice = input("[Press X to go back or Y to move forward]:  ").strip().title()
+        if remove_choice == "X":
+            print("If you don't want to remove anyone from your list, then let's go back.")
+            return
+        if remove_choice == "Y":
+            break
+
     while True:
         try:
             remove_times = int(input("How many people do you want to remove?:  "))
@@ -61,21 +70,16 @@ def remove(): # Function that removes guests from the list
 
 
 def replace(): # Function that replaces a guest in the list
-    replace_num = 1
     while True:
-        try:
-            replace_times = int(input("How many people do you want to replace:  "))
-            if replace_times <= 0:
-                print("If you don't want to replace anyone in your list, then let's go back.")
-                return
-            break
-        except ValueError:
-            print(f"Invalid! Enter a number\n")
-            continue
+        replace_name = input("Who do you want to replace? [Press X to go back]:  ").strip().title()
+        if replace_name == "X":
+            print("If you don't want to replace anyone in your list, then let's go back.")
+            return
+        break
         
-    for x in range(replace_times):
-        guest_list.replace(input(f"Replace {replace_num}:").strip().title())
-        replace_num = replace_num + 1
+    replace_name2 = input(f"Replace {replace_name} with:  ").strip().title()
+    replace_name == "2"
+    guest_list(2) == replace_name2
         
     print(f"\nHere's your guest list:")
     guest_list.sort() # Sorting the list alphabetically
@@ -86,72 +90,74 @@ def replace(): # Function that replaces a guest in the list
     print(len(guest_list)) # Prints out the number of people in the guest list
     print("")
         
+while True:
+    # Greet the user
+    print(f"\nHi user!")
+    print("Wanting to hold out a dinner date at your house or anywhere?")
+    print("But don't know how to invite the guests?")
+    print(f"Well then, you are at the right spot!\n")
+    print("Welcome to the dinner guest list prgram!")
+    name = input(f"To begin, what is your name?  ").strip().capitalize()
+    print(f"Sup {name}! Let's make a good dinner guest list together!\n")
 
-# Greet the user
-print(f"\nHi user!")
-print("Wanting to hold out a dinner date at your house or anywhere?")
-print("But don't know how to invite the guests?")
-print(f"Well then, you are at the right spot!\n")
-print("Welcome to the dinner guest list prgram!")
-name = input(f"To begin, what is your name?  ").strip().capitalize()
-print(f"Sup {name}! Let's make a good dinner guest list together!\n")
+    # Bring out the add guests function
+    add()
 
-# Bring out the add guests function
-add()
+    # Ask the user if they want to add someone else in the list 
+    while True: # Loop if choice_add is yes
+        while True: # Input problem
+            choice_add = input("Forgot someone? Do you want to add anyone else in the list? [y/n]:  ").strip().lower()
+            if choice_add in ['y', 'n']:
+                break
+            print(f"Invalid! Enter either [y]es or [n]o.\n")
+            continue
 
-# Ask the user if they want to add someone else in the list 
-while True: # Loop if choice_add is yes
-    while True: # Input problem
-        choice_add = input("Forgot someone? Do you want to add anyone else in the list? [y/n]:  ").strip().lower()
-        if choice_add in ['y', 'n']:
+        if choice_add == "y":
+            add()
+
+        if choice_add == "n":
             break
-        print(f"Invalid! Enter either [y]es or [n]o.\n")
-        continue
 
-    if choice_add == "y":
-        add()
+    # Ask the user if they want to remove anyone from the list
+    while True: # Loop if choice_remove is yes
+        while True: # Input problem
+            choice_remove = input("Do you want to remove anyone else from the list? [y/n]:  ").strip().lower()
+            if choice_remove in ['y', 'n']:
+                break
+            print(f"Invalid! Enter either [y]es or [n]o.\n")
+            continue
 
-    if choice_add == "n":
-        break
+        if choice_remove == "y":
+            remove()
 
-# Ask the user if they want to remove anyone from the list
-while True: # Loop if choice_remove is yes
-    while True: # Input problem
-        choice_remove = input("Do you want to remove anyone else from the list? [y/n]:  ").strip().lower()
-        if choice_remove in ['y', 'n']:
+        if choice_remove == "n": # Final list
+            print(f"\nHere's your final guest list:")
+            guest_list.sort() # Sorting the list alphabetically
+            for guests in guest_list:
+                print(guests) # Prints out the guest list
+            print(f"\nThe number of people, you invited-: ")
+            print(len(guest_list)) # Prints out the number of people in the guest list
+            print("")
             break
-        print(f"Invalid! Enter either [y]es or [n]o.\n")
-        continue
 
-    if choice_remove == "y":
-        remove()
-
-    if choice_remove == "n":
-        break
-    
-# Ask the user if they want to replace someone from the list
-while True: # Loop if choice_replace is yes
-    while True: # Input problem
-        choice_replace = input("Do you want to replace anyone in the list? [y/n]:  ").strip().lower()
-        if choice_replace in ['y', 'n']:
+        while True:
+            choice = input("Do you want to change anything? [y/n]:  ").strip().title()
+            if choice in ['y', 'n']:
+                break
+            print("Invalid! Enter either [Y]es or [N]o")
             break
-        print(f"Invalid! Enter either [y]es or [n]o.\n")
-        continue
 
-    if choice_replace == "y":
-        replace()
+        if choice == "Y":
+            continue
 
-    elif choice_replace == "n": # Final list
-        print(f"\nHere's your final guest list:")
-        guest_list.sort() # Sorting the list alphabetically
-        for guests in guest_list:
-            print(guests) # Prints out the guest list
-        print(f"\nThe number of people, you invited-: ")
-        print(len(guest_list)) # Prints out the number of people in the guest list
-        print("")
+        if choice == "N":
+            break
         break
+    break
 
 # Print out the invitations
+for x in range(len(guest_list)):
+    print(guest_list[0]("Hi, How you doing? It's been a while, wanna get together at my house for a dinner party?"))
 
 
 
