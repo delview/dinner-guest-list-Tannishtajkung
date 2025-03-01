@@ -19,12 +19,12 @@ def add(): # Function that adds guests to the list
 
     for x in range(add_times):
         while True:
-            guest_add = input(f"Add guest {add_num}:  ").strip().title()
+            guest_add = input(f"\nAdd guest {add_num}:  ").strip().title()
             if guest_add in guest_list: # Checks if input is in the list
-                print(f"Guest already in the list.\n")
+                print("Guest already in the list.")
                 continue
             elif not guest_add: # Checks if input is empty
-                print(f"Please enter a valid name.")
+                print("Please enter a valid name.")
                 continue
             else:
                 guest_list.append(guest_add)
@@ -65,13 +65,13 @@ def remove(): # Function that removes guests from the list
 
     for x in range(remove_times):
         while True:
-            guest_remove = input(f"Remove guest {remove_num}:  ").strip().title()
+            guest_remove = input(f"\nRemove guest {remove_num}:  ").strip().title()
             if guest_remove in guest_list: # Checks if input is in the list
                 guest_list.remove(guest_remove)
                 remove_num = remove_num + 1
                 break
             else:
-                print(f"{guest_remove} is not in the list.\n")
+                print(f"{guest_remove} is not in the list.")
                 continue
 
 
@@ -154,8 +154,20 @@ while True: # Loop if choice is yes
     break
 
  # Print out the invitations
-for x in range(len(guest_list)):
-    print(f"Hi {guests}, How you doing? It's been a while, wanna get together at my house for a dinner party?")
-        
+print(f"Here are your invitation messages-:\n")
+invitation = [
+    "\nHey {}, how's it going? I am hosting a dinner party at my place tomorrow and you are invited!",
+    "\nHii {}, it's been a while. Let's catch up tomorrow over a wonderful dinner party at my place!",
+    "\nDear {}, I hope you're doing well. You are invited to a dinner party at my place tomorrow!",
+    "\nSup {}, dinner party at my place tomorrow, no excuses, you better show up!",
+    "\nYo {}, I'm throwing a dinner party at my place tommorow, would love if you were there too.",
+    "\nHello {}, free tommorow? I'm throwing a dinner party and you are invited!" ,
+]
+
+for i, guests in enumerate(guest_list):
+    message = invitation[i % len(invitation)] # Will loop through the invitations if there are more than 6 guests in the list
+    print(message.format(guests))
+
 # Goodbye
+print("")
 print(f"\nThanks for using the program, hope your dinner party goes well!\n")
