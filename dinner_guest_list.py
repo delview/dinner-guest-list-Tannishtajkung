@@ -18,8 +18,18 @@ def add(): # Function that adds guests to the list
             continue   
 
     for x in range(add_times):
-        guest_list.append(input(f"Guest {add_num}:  ").strip().title())
-        add_num = add_num + 1
+        while True:
+            guest_add = input(f"Add guest {add_num}:  ").strip().title()
+            if guest_add in guest_list: # Checks if input is in the list
+                print(f"Guest already in the list.\n")
+                continue
+            elif not guest_add: # Checks if input is empty
+                print(f"Please enter a valid name.")
+                continue
+            else:
+                guest_list.append(guest_add)
+                add_num = add_num + 1
+                break
 
     print(f"\nHere's your guest list:")
     guest_list.sort() # Sorting the list alphabetically
@@ -54,8 +64,16 @@ def remove(): # Function that removes guests from the list
             continue   
 
     for x in range(remove_times):
-        guest_list.remove(input(f"Guest {remove_num}:  ").strip().title())
-        remove_num = remove_num + 1
+        while True:
+            guest_remove = input(f"Remove guest {remove_num}:  ").strip().title()
+            if guest_remove in guest_list: # Checks if input is in the list
+                guest_list.remove(guest_remove)
+                remove_num = remove_num + 1
+                break
+            else:
+                print(f"{guest_remove} is not in the list.\n")
+                continue
+
 
     print(f"\nHere's your guest list:")
     guest_list.sort() # Sorting the list alphabetically
@@ -72,8 +90,14 @@ print("Wanting to hold out a dinner date at your house or anywhere?")
 print("But don't know how to invite the guests?")
 print(f"Well then, you are at the right spot!\n")
 print("Welcome to the dinner guest list prgram!")
-name = input(f"To begin, what is your name?  ").strip().capitalize()
-print(f"Sup {name}! Let's make a good dinner guest list together!")
+while True:
+    name = input(f"To begin, what is your name?  ").strip().capitalize()
+    if not name: # Checks if input is empty
+        print("You can't have 'no name', that's weird! Please enter a valid name.")
+        continue
+    else:
+        print(f"Sup {name}! Let's make a good dinner guest list together!")
+        break
 
 while True: # Loop if choice is yes
     # Bring out the add guests function
@@ -131,7 +155,7 @@ while True: # Loop if choice is yes
 
  # Print out the invitations
 for x in range(len(guest_list)):
-    print(guest_list[0]("Hi, How you doing? It's been a while, wanna get together at my house for a dinner party?"))
+    print(f"Hi {guests}, How you doing? It's been a while, wanna get together at my house for a dinner party?")
         
 # Goodbye
 print(f"\nThanks for using the program, hope your dinner party goes well!\n")
